@@ -1,0 +1,103 @@
+//
+// DIV Tables
+// --------------------------------------------------
+
+.table-div {
+  background-color: @table-bg;
+  margin-bottom: @line-height-computed;
+
+  @media (max-width: @screen-xs-max) {
+    border: 1px solid @table-border-color;
+  }
+
+  // thead, tbody, tfoot
+  > div {
+    // Rows
+    > div {
+      // Cells
+        > div {
+          padding: @table-cell-padding;
+          line-height: @line-height-base;
+          
+          @media (min-width: @screen-sm-min) {
+            border-top: 1px solid @table-border-color;
+          }
+        }
+    }
+
+    &.table-div-body > div {
+      @media (max-width: @screen-xs-max) {
+        border-top: 1px solid @table-border-color;
+      }
+    }
+
+    // Bottom align for column headings
+    &.table-div-head > div > .table-div-headings {
+      @media (min-width: @screen-sm-min) {
+        border-bottom: 2px solid @table-border-color;
+      }
+    }
+  }
+
+  // DIV Tabelle erstellen
+  @media (min-width: @screen-sm-min) {
+    display: table;
+
+    // thead, tbody, tfoot
+    > div {
+      display: table-row-group;
+
+      &.table-div-head { display: table-header-group; }
+      &.table-div-foot { display: table-footer-group; }
+
+      // Rows
+      > div {
+        display: table-row;
+
+        // Cells
+          > div {
+            display: table-cell;
+          }
+      }
+    }
+  }
+}
+
+
+// Table Div Footer
+//
+
+.outerTableFooter {
+  @media (min-width: @screen-sm-min) {
+    border-top: none;
+  }
+}
+
+
+// Bordered version
+//
+// Add borders all around the table and between all the columns.
+
+.table-div-bordered {
+  @media (min-width: @screen-sm-min) {
+    border-collapse: collapse;
+
+    > div > div > div {
+      border: 1px solid @table-border-color;
+    }
+  }
+}
+
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.table-div-striped {
+  @media (min-width: @screen-sm-min) {
+    > .table-div-body > div:nth-of-type(odd) {
+      background-color: @table-bg-accent;
+    }
+  }
+}
+
